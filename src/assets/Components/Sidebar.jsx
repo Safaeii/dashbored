@@ -148,7 +148,11 @@ function Sidebar({ isOpen, setIsOpen }) {
 
         {/* ================= Main Menu ================= */}
 
-        <h2 className="text-sm text-[#546E7A] mb-3">
+        <h2 className="text-sm text-[#546E7A] mb-3 w-full hover:text-[#4EA674] 
+        
+        transition-all duration-300 ease-in-out hover:bg-[#B0BEC5] hover:scale-105
+        
+        ">
           Main menu
         </h2>
 
@@ -168,7 +172,10 @@ function Sidebar({ isOpen, setIsOpen }) {
                 py-2
                 rounded-sm
                 cursor-pointer
-                ${index === 0 ? "bg-[#4EA674]" : ""}
+                  hover:bg-[#4EA674]
+         transition-all duration-300 ease-in-out  hover:scale-105
+
+                ${index === 0 ? " text-[#546E7A] bg-[#EAF8E7] " : ""}
               `}
             >
 
@@ -188,7 +195,7 @@ function Sidebar({ isOpen, setIsOpen }) {
                   strokeLinejoin="round"
                   className={
                     index === 0
-                      ? "text-white"
+                      ? ""
                       : "text-[#546E7A]"
                   }
                 >
@@ -214,7 +221,7 @@ function Sidebar({ isOpen, setIsOpen }) {
                 className={
                   index === 0
                     ? "text-white text-sm"
-                    : "text-[#546E7A] text-sm"
+                    : "text-[#546E7A] text-sm transition-all duration-300 ease-in-out  hover:scale-105  hover:text-white "
                 }
               >
                 {item.title}
@@ -229,18 +236,31 @@ function Sidebar({ isOpen, setIsOpen }) {
 
         {/* ================= Product ================= */}
 
-        <h2 className="text-sm text-[#546E7A] mt-6 mb-3">
+        <h2 className="text-sm text-[#546E7A] mt-6 mb-3  hover:text-[#4EA674]
+               transition-all duration-300 ease-in-out  hover:scale-105">
           Product
         </h2>
 
 
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-3
+        ">
 
           {productItems.map((item) => (
 
             <div
               key={item.title}
-              className="flex items-center gap-2 cursor-pointer"
+              className=" flex
+                items-center
+                gap-2
+                w-full
+                px-2
+                py-2
+                rounded-sm
+                cursor-pointer
+                  hover:bg-[#4EA674]
+                  focus:outline-2
+                      hover:text-white
+                             transition-all duration-300 ease-in-out  hover:scale-105"
             >
 
               <img
@@ -249,7 +269,9 @@ function Sidebar({ isOpen, setIsOpen }) {
                 className="size-5"
               />
 
-              <p className="text-[#546E7A] text-sm">
+              <p className="text-[#546E7A] text-sm
+               hover:text-white
+                      transition-all duration-300 ease-in-out  hover:scale-105">
                 {item.title}
               </p>
 
@@ -262,7 +284,8 @@ function Sidebar({ isOpen, setIsOpen }) {
 
         {/* ================= Admin ================= */}
 
-        <h2 className="text-sm text-[#546E7A] mt-6 mb-3">
+        <h2 className="text-sm text-[#546E7A] mt-6 mb-3  hover:text-[#4EA674]
+               transition-all duration-300 ease-in-out  hover:scale-105">
           Admin
         </h2>
 
@@ -273,7 +296,18 @@ function Sidebar({ isOpen, setIsOpen }) {
 
             <div
               key={item.title}
-              className="flex items-center gap-2 cursor-pointer"
+              className=" flex
+                items-center
+                gap-2
+                w-full
+                px-2
+                py-2
+                rounded-sm
+                cursor-pointer
+                  hover:bg-[#4EA674]
+                    hover:text-white    
+                       transition-all duration-300 ease-in-out  hover:scale-105
+                     "
             >
 
               <img
@@ -282,7 +316,9 @@ function Sidebar({ isOpen, setIsOpen }) {
                 className="size-5"
               />
 
-              <p className="text-[#546E7A] text-sm">
+              <p className="text-[#546E7A] text-sm
+               hover:text-white
+                      transition-all duration-300 ease-in-out  hover:scale-105">
                 {item.title}
               </p>
 
@@ -309,7 +345,9 @@ function Sidebar({ isOpen, setIsOpen }) {
               Dealport
             </h2>
 
-            <p className="text-[#546E7A] text-xs">
+            <p className="text-[#546E7A] text-xs
+              hover:text-[#4EA674]
+                     transition-all duration-300 ease-in-out  hover:scale-105  hover:bg-[#B0BEC5]">
               Mark@thedesigner...
             </p>
 
@@ -357,3 +395,8 @@ function Sidebar({ isOpen, setIsOpen }) {
 }
 
 export default Sidebar;
+
+{/* <button class="transition-all duration-300 ease-in-out hover:bg-blue-600 hover:scale-105">
+  Hover me
+</button> */}
+

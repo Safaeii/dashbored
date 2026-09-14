@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Header({ setIsOpen }) {
+function Header({ isOpen,setIsOpen}) {
 
 
 const [DarkMode,SetDarkMode]=useState(false)
@@ -18,12 +18,11 @@ const [DarkMode,SetDarkMode]=useState(false)
 
         {/* Hamburger */}
 
-        <button
-          type="button"
-          onClick={() => setIsOpen(prev => !prev)}
-          className="text-[#546E7A] cursor-pointer"
-        >
-
+      <button
+  type="button"
+  onClick={() => setIsOpen(prev => !prev)}
+  className={`text-[#546E7A] cursor-pointer ${isOpen ? "hidden" : ""}`}
+>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -116,4 +115,4 @@ const [DarkMode,SetDarkMode]=useState(false)
 }
 
 export default Header;
-;
+
