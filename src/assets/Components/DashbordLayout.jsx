@@ -1,25 +1,30 @@
-
 import { useState } from "react";
+import { Outlet } from "react-router-dom";
+
 import Sidebar from "./Sidebar";
 import Header from "./Header";
-import TotalCard from "./TotalCard";
-import Week1Report from "./Week1Report"
-function DashboardLayout() {
+
+function DashboardLayout({ DarkMode, SetDarkMode }) {
   const [isOpen, setIsOpen] = useState(true);
 
   return (
-    <div className="min-h-screen bg-[#F8FAF9]">
+    <div
+      className={`min-h-screen transition-colors duration-500 ${
+        DarkMode
+          ? "bg-gray-900 text-white"
+          : "bg-white text-gray-900"
+      }`}
+    >
+      {/* Sidebar */}
+      <div className="transition-all duration-300">
+        <Sidebar
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          DarkMode={DarkMode}
+        />
+      </div>
 
-      {/* ================= Sidebar ================= */}
-<div className=" transition-all duration-300 ">
-     <Sidebar
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
-      />
-</div>
-
-      {/* ================= Main Content ================= */}
-
+      {/* Main Content */}
       <div
         className={`
           min-h-screen
@@ -28,65 +33,23 @@ function DashboardLayout() {
           ${isOpen ? "ml-64" : "ml-0"}
         `}
       >
+        {/* Header */}
+        <div className="transition-all duration-300 ease-in-out">
+          <Header
+            setIsOpen={setIsOpen}
+            isOpen={isOpen}
+            DarkMode={DarkMode}
+            SetDarkMode={SetDarkMode}
+          />
+        </div>
 
-        {/* ================= Header ================= */}
-<div className="  transition-all duration-300 ease-in-out">
-     <Header
-          setIsOpen={setIsOpen}
-          isOpen={isOpen}
-        />
-
-</div>
-   
-        {/* ================= Content ================= */}
-
+        {/* Page Content */}
         <main className="p-5">
-
-          {/* ================= Total Cards ================= */}
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5  transition-all duration-300 ease-in-out
-              ">
-              
-
-            <TotalCard
-              title="Total Sales"
-              period="Last 7 days"
-              value="$350K"
-              label="Sales"
-              percent="+10.4%"
-              previous="$325K"
-            />
-
-            <TotalCard
-              title="Total Orders"
-              period="Last 7 days"
-              value="10.7K"
-              label="Orders"
-              percent="+14.4%"
-              previous="(7.6K)"
-            />
-
-            <TotalCard
-              title="Pending & Canceled"
-              period="Last 7 days"
-              value="509"
-              label="Pending"
-              percent="+20%"
-              previous="424"
-            />
-
-          </div>
-          {/* =============== Week1Report===========*/}
-
-<Week1Report/>
-
+          <Outlet />
         </main>
-
       </div>
     </div>
   );
 }
 
 export default DashboardLayout;
-
-

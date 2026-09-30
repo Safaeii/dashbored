@@ -1,16 +1,26 @@
-import { useState } from "react";
+import Them from "./Them";
+import {
+Bell ,
+  Search,
 
-function Header({ isOpen,setIsOpen}) {
+  UserRound 
+} from "lucide-react";
+function Header({ DarkMode, SetDarkMode, isOpen, setIsOpen }) {
+ 
 
 
-const [DarkMode,SetDarkMode]=useState(false)
+
 
 
 
 
   return (
-    <header className="bg-white w-full h-20 flex justify-between items-center px-10
-    ">
+    <header className={`w-full h-20 flex justify-between items-center px-10 transition-colors duration-300 ${
+    DarkMode
+      ? "bg-gray-800 text-white border border-white/20"
+      : "bg-white text-gray-900"
+  }`}
+    >
 
       {/* ================= Left ================= */}
 
@@ -47,7 +57,7 @@ const [DarkMode,SetDarkMode]=useState(false)
 
         </button>
 
-        <span className="text-[#023337] text-sm font-bold">
+        <span className="text-[#1e737a] text-sm font-bold">
           Dashboard
         </span>
 
@@ -60,53 +70,29 @@ const [DarkMode,SetDarkMode]=useState(false)
 
         {/* Search */}
 
-        <div className="flex items-center justify-between bg-[#EAF8E7] px-3 w-60 h-10 rounded-3xl">
+        <div className="flex items-center justify-between shadow-sm  px-3 w-60 h-10 rounded-3xl">
 
           <span className="text-[#546E7A] text-xs">
             Search data, users, or reports
           </span>
 
-          <img
-            src="/src/assets/images/Frame 4124.png"
-            alt=""
-            className="size-4"
-          />
+       <Search />
 
         </div>
 
 
         {/* Notification */}
 
-        <img
-          src="/src/assets/images/Bell outline.png"
-          alt=""
-          className="size-4"
-        />
-        {/* Theme */}
+   <Bell />
+        {/* ====them==== */}
+<Them
+  DarkMode={DarkMode}
+  SetDarkMode={SetDarkMode}
+/>
 
-<button
-  onClick={() => SetDarkMode(!DarkMode)}
-  className="bg-[#EAF8E7] w-10 h-5 rounded-full flex items-center px-1"
->
-  <span
-    className={`size-4 rounded-full bg-white shadow-md transition-transform duration-300 ${
-      DarkMode ? "translate-x-5" : "translate-x-0"
-    }`}
-  >
-    <img
-      src="/src/assets/images/iconamoon_mode-light.png"
-      alt=""
-      className="size-4"
-    />
-  </span>
-</button>
         {/* Profile */}
 
-        <img
-          src="/src/assets/images/17 Picture.png"
-          alt=""
-          className="size-6"
-        />
+<UserRound />
 
       </div>
 

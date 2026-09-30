@@ -1,402 +1,403 @@
+import { NavLink } from "react-router-dom";
 
-function Sidebar({ isOpen, setIsOpen }) {
+import {
+  House,
+  Package,
+  UsersRound,
+  ShoppingCartPlus,
+  Tags,
+  Boxes,
+  BarChart3,
+  Settings,
+  CircleHelp,
+} from "lucide-react";
 
-  // ===================== Main Menu =====================
+function Sidebar({
+  isOpen,
+  setIsOpen,
+  DarkMode,
+}) {
+  // ================= MAIN MENU =================
 
   const menuItems = [
     {
       title: "Dashboard",
-      icon: "house",
+      path: "/dashboard",
+      icon: House,
     },
     {
       title: "Order Management",
-      icon: "/src/assets/images/Cart.png",
+      path: "/orders",
+      icon: Package,
     },
     {
       title: "Customers",
-      icon: "/src/assets/images/users.png",
-    },
-    {
-      title: "Coupon Code",
-      icon: "/src/assets/images/ticket (1).png",
-    },
-    {
-      title: "Categories",
-      icon: "/src/assets/images/circle-square.png",
-    },
-    {
-      title: "Transaction",
-      icon: "/src/assets/images/famicons_card-outline.png",
-    },
-    {
-      title: "Brand",
-      icon: "/src/assets/images/star.png",
+      path: "/customers",
+      icon: UsersRound,
     },
   ];
 
-
-  // ===================== Product =====================
+  // ================= PRODUCTS =================
 
   const productItems = [
     {
-      title: "Add Products",
-      icon: "/src/assets/images/Bell outline.png",
+      title: "Products",
+      path: "/products",
+      icon: ShoppingCartPlus,
     },
     {
-      title: "Product Media",
-      icon: "/src/assets/images/fluent-mdl2_product-list.png",
+      title: "Categories",
+      path: "/categories",
+      icon: Tags,
     },
     {
-      title: "Product List",
-      icon: "/src/assets/images/ticket (1).png",
-    },
-    {
-      title: "Product Reviews",
-      icon: "/src/assets/images/material-symbols_reviews-outline.png",
+      title: "Inventory",
+      path: "/inventory",
+      icon: Boxes,
     },
   ];
 
+  // ================= ANALYTICS =================
 
-  // ===================== Admin =====================
-
-  const adminItems = [
+  const analyticsItems = [
     {
-      title: "Admin role",
-      icon: "/src/assets/images/user-profile-circle.png",
-    },
-    {
-      title: "Control Authority",
-      icon: "/src/assets/images/settings.png",
+      title: "Sales Analytics",
+      path: "/sales-analytics",
+      icon: BarChart3,
     },
   ];
 
+  // ================= SETTINGS =================
+
+  const settingsItems = [
+    {
+      title: "Settings",
+      path: "/settings",
+      icon: Settings,
+    },
+    {
+      title: "Help & Support",
+      path: "/help",
+      icon: CircleHelp,
+    },
+  ];
 
   return (
-    <>
+    <aside
+      className={`
+        fixed
+        top-0
+        left-0
+        z-50
+        h-screen
+        w-64
+        overflow-y-auto
+        transition-all
+        duration-300
+        border-r
 
-      {/* ================= Overlay ================= */}
+        ${
+          DarkMode
+            ? "bg-gray-800 text-white border-gray-700"
+            : "bg-white text-gray-800 border-gray-200"
+        }
 
-{/* ${isOpen ? "translate-x-0" : "-translate-x-full"} */}
-      {/* ================= Sidebar ================= */}
+        ${
+          isOpen
+            ? "translate-x-0"
+            : "-translate-x-full"
+        }
+      `}
+    >
 
-      <aside
+      {/* ================= HEADER ================= */}
+
+      <div
         className={`
-    fixed
-    top-0
-    left-0
-    z-50
-    w-64
-    h-screen
-    bg-white
-    shadow-lg
-    px-3
-    py-8
-    overflow-y-auto
-    transition-transform
-    duration-300
-    ease-in-out
-    ${isOpen ? "translate-x-0" : "-translate-x-full"}
-  `}
->
+          flex
+          items-center
+          justify-between
+          p-5
+          border-b
 
+          ${
+            DarkMode
+              ? "border-gray-700"
+              : "border-gray-200"
+          }
+        `}
+      >
+        <h1 className="text-xl font-bold">
+          Dashboard
+        </h1>
 
-        {/* ================= Logo ================= */}
+        <button
+          onClick={() => setIsOpen(false)}
+          className="
+            text-xl
+            hover:opacity-70
+            transition
+          "
+        >
+          ✕
+        </button>
+      </div>
 
-        <div className="flex justify-between items-center mb-6">
+      {/* ================= NAVIGATION ================= */}
 
-          <img
-            src="/src/assets/images/Frame 4121.png"
-            alt="logo"
-            className="w-20 h-5"
-          />
+      <nav className="p-4">
 
+        {/* ================= MAIN MENU ================= */}
 
-          {/* Close Button */}
+        <div className="mb-6">
 
-          <button
-            type="button"
-            onClick={() => setIsOpen(false)}
-            className="text-[#546E7A] cursor-pointer"
+          <p
+            className={`
+              text-xs
+              font-semibold
+              mb-3
+
+              ${
+                DarkMode
+                  ? "text-gray-400"
+                  : "text-gray-500"
+              }
+            `}
           >
+            MAIN MENU
+          </p>
 
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M3 5h1" />
-              <path d="M3 12h1" />
-              <path d="M3 19h1" />
-              <path d="M8 5h1" />
-              <path d="M8 12h1" />
-              <path d="M8 19h1" />
-              <path d="M13 5h8" />
-              <path d="M13 12h8" />
-              <path d="M13 19h8" />
-            </svg>
+          <div className="space-y-2">
 
-          </button>
+            {menuItems.map((item) => {
+              const Icon = item.icon;
 
-        </div>
+              return (
+                <NavLink
+                  key={item.path}
+                  to={item.path}
+                  className={({ isActive }) =>
+                    `
+                    flex
+                    items-center
+                    gap-3
+                    px-4
+                    py-3
+                    rounded-xl
+                    transition-all
+                    duration-200
 
-
-        {/* ================= Main Menu ================= */}
-
-        <h2 className="text-sm text-[#546E7A] mb-3 w-full hover:text-[#4EA674] 
-        
-        transition-all duration-300 ease-in-out hover:bg-[#B0BEC5] hover:scale-105
-        
-        ">
-          Main menu
-        </h2>
-
-
-        <div className="flex flex-col gap-2">
-
-          {menuItems.map((item, index) => (
-
-            <div
-              key={item.title}
-              className={`
-                flex
-                items-center
-                gap-2
-                w-full
-                px-2
-                py-2
-                rounded-sm
-                cursor-pointer
-                  hover:bg-[#4EA674]
-         transition-all duration-300 ease-in-out  hover:scale-105
-
-                ${index === 0 ? " text-[#546E7A] bg-[#EAF8E7] " : ""}
-              `}
-            >
-
-              {/* Dashboard Icon */}
-
-              {item.icon === "house" ? (
-
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className={
-                    index === 0
-                      ? ""
-                      : "text-[#546E7A]"
+                    ${
+                      isActive
+                        ? "bg-[#4EA674] text-white"
+                        : DarkMode
+                        ? "text-gray-300 hover:bg-gray-700"
+                        : "text-gray-600 hover:bg-gray-100"
+                    }
+                    `
                   }
                 >
+                  <Icon size={20} />
 
-                  <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
-
-                  <path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-
-                </svg>
-
-              ) : (
-
-                <img
-                  src={item.icon}
-                  alt={item.title}
-                  className="size-5"
-                />
-
-              )}
-
-
-              <p
-                className={
-                  index === 0
-                    ? "text-white text-sm"
-                    : "text-[#546E7A] text-sm transition-all duration-300 ease-in-out  hover:scale-105  hover:text-white "
-                }
-              >
-                {item.title}
-              </p>
-
-            </div>
-
-          ))}
-
-        </div>
-
-
-        {/* ================= Product ================= */}
-
-        <h2 className="text-sm text-[#546E7A] mt-6 mb-3  hover:text-[#4EA674]
-               transition-all duration-300 ease-in-out  hover:scale-105">
-          Product
-        </h2>
-
-
-        <div className="flex flex-col gap-3
-        ">
-
-          {productItems.map((item) => (
-
-            <div
-              key={item.title}
-              className=" flex
-                items-center
-                gap-2
-                w-full
-                px-2
-                py-2
-                rounded-sm
-                cursor-pointer
-                  hover:bg-[#4EA674]
-                  focus:outline-2
-                      hover:text-white
-                             transition-all duration-300 ease-in-out  hover:scale-105"
-            >
-
-              <img
-                src={item.icon}
-                alt={item.title}
-                className="size-5"
-              />
-
-              <p className="text-[#546E7A] text-sm
-               hover:text-white
-                      transition-all duration-300 ease-in-out  hover:scale-105">
-                {item.title}
-              </p>
-
-            </div>
-
-          ))}
-
-        </div>
-
-
-        {/* ================= Admin ================= */}
-
-        <h2 className="text-sm text-[#546E7A] mt-6 mb-3  hover:text-[#4EA674]
-               transition-all duration-300 ease-in-out  hover:scale-105">
-          Admin
-        </h2>
-
-
-        <div className="flex flex-col gap-3">
-
-          {adminItems.map((item) => (
-
-            <div
-              key={item.title}
-              className=" flex
-                items-center
-                gap-2
-                w-full
-                px-2
-                py-2
-                rounded-sm
-                cursor-pointer
-                  hover:bg-[#4EA674]
-                    hover:text-white    
-                       transition-all duration-300 ease-in-out  hover:scale-105
-                     "
-            >
-
-              <img
-                src={item.icon}
-                alt={item.title}
-                className="size-5"
-              />
-
-              <p className="text-[#546E7A] text-sm
-               hover:text-white
-                      transition-all duration-300 ease-in-out  hover:scale-105">
-                {item.title}
-              </p>
-
-            </div>
-
-          ))}
-
-        </div>
-
-
-        {/* ================= Account ================= */}
-
-        <div className="flex justify-center gap-2 items-center mt-6">
-
-          <img
-            src="/src/assets/images/17 Picture.png"
-            alt=""
-            className="size-5"
-          />
-
-          <div className="flex flex-col items-start">
-
-            <h2 className="text-sm font-bold">
-              Dealport
-            </h2>
-
-            <p className="text-[#546E7A] text-xs
-              hover:text-[#4EA674]
-                     transition-all duration-300 ease-in-out  hover:scale-105  hover:bg-[#B0BEC5]">
-              Mark@thedesigner...
-            </p>
+                  <span className="text-sm font-medium">
+                    {item.title}
+                  </span>
+                </NavLink>
+              );
+            })}
 
           </div>
-
-          <img
-            src="/src/assets/images/ic_round-logout.png"
-            alt=""
-            className="size-5"
-          />
-
         </div>
 
+        {/* ================= PRODUCTS ================= */}
 
-        {/* ================= Your Shop ================= */}
+        <div className="mb-6">
 
-        <div className="flex items-center justify-between w-full h-10 px-2 rounded-xl shadow mt-4">
+          <p
+            className={`
+              text-xs
+              font-semibold
+              mb-3
 
-          <div className="flex items-center gap-2">
+              ${
+                DarkMode
+                  ? "text-gray-400"
+                  : "text-gray-500"
+              }
+            `}
+          >
+            PRODUCTS
+          </p>
 
-            <img
-              src="/src/assets/images/Frame.png"
-              alt=""
-              className="size-5"
-            />
+          <div className="space-y-2">
 
-            <p className="text-xs text-[#546E7A]">
-              Your Shop
-            </p>
+            {productItems.map((item) => {
+              const Icon = item.icon;
+
+              return (
+                <NavLink
+                  key={item.path}
+                  to={item.path}
+                  className={({ isActive }) =>
+                    `
+                    flex
+                    items-center
+                    gap-3
+                    px-4
+                    py-3
+                    rounded-xl
+                    transition-all
+                    duration-200
+
+                    ${
+                      isActive
+                        ? "bg-[#4EA674] text-white"
+                        : DarkMode
+                        ? "text-gray-300 hover:bg-gray-700"
+                        : "text-gray-600 hover:bg-gray-100"
+                    }
+                    `
+                  }
+                >
+                  <Icon size={20} />
+
+                  <span className="text-sm font-medium">
+                    {item.title}
+                  </span>
+                </NavLink>
+              );
+            })}
 
           </div>
-
-          <img
-            src="/src/assets/images/link-external.png"
-            alt=""
-            className="size-5"
-          />
-
         </div>
 
-      </aside>
+        {/* ================= ANALYTICS ================= */}
 
-    </>
+        <div className="mb-6">
+
+          <p
+            className={`
+              text-xs
+              font-semibold
+              mb-3
+
+              ${
+                DarkMode
+                  ? "text-gray-400"
+                  : "text-gray-500"
+              }
+            `}
+          >
+            ANALYTICS
+          </p>
+
+          <div className="space-y-2">
+
+            {analyticsItems.map((item) => {
+              const Icon = item.icon;
+
+              return (
+                <NavLink
+                  key={item.path}
+                  to={item.path}
+                  className={({ isActive }) =>
+                    `
+                    flex
+                    items-center
+                    gap-3
+                    px-4
+                    py-3
+                    rounded-xl
+                    transition-all
+                    duration-200
+
+                    ${
+                      isActive
+                        ? "bg-[#4EA674] text-white"
+                        : DarkMode
+                        ? "text-gray-300 hover:bg-gray-700"
+                        : "text-gray-600 hover:bg-gray-100"
+                    }
+                    `
+                  }
+                >
+                  <Icon size={20} />
+
+                  <span className="text-sm font-medium">
+                    {item.title}
+                  </span>
+                </NavLink>
+              );
+            })}
+
+          </div>
+        </div>
+
+        {/* ================= SETTINGS ================= */}
+
+        <div className="mb-6">
+
+          <p
+            className={`
+              text-xs
+              font-semibold
+              mb-3
+
+              ${
+                DarkMode
+                  ? "text-gray-400"
+                  : "text-gray-500"
+              }
+            `}
+          >
+            SETTINGS
+          </p>
+
+          <div className="space-y-2">
+
+            {settingsItems.map((item) => {
+              const Icon = item.icon;
+
+              return (
+                <NavLink
+                  key={item.path}
+                  to={item.path}
+                  className={({ isActive }) =>
+                    `
+                    flex
+                    items-center
+                    gap-3
+                    px-4
+                    py-3
+                    rounded-xl
+                    transition-all
+                    duration-200
+
+                    ${
+                      isActive
+                        ? "bg-[#4EA674] text-white"
+                        : DarkMode
+                        ? "text-gray-300 hover:bg-gray-700"
+                        : "text-gray-600 hover:bg-gray-100"
+                    }
+                    `
+                  }
+                >
+                  <Icon size={20} />
+
+                  <span className="text-sm font-medium">
+                    {item.title}
+                  </span>
+                </NavLink>
+              );
+            })}
+
+          </div>
+        </div>
+
+      </nav>
+    </aside>
   );
 }
 
 export default Sidebar;
-
-{/* <button class="transition-all duration-300 ease-in-out hover:bg-blue-600 hover:scale-105">
-  Hover me
-</button> */}
-

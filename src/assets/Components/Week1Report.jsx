@@ -1,6 +1,6 @@
 
 
-function Week1Report() {
+function Week1Report({DarkMode}) {
   const reports = [
     { dey: "Mon", value: 40 },
     { dey: "Tue", value: 65 },
@@ -14,8 +14,17 @@ function Week1Report() {
   const levels = [0, 20, 40, 60, 80, 100];
 
   return (
-    <div className="w-full">
-      <div className="bg-white rounded-xl p-5 w-full">
+    
+<div
+  className={`shadow-sm rounded-xl p-5 border  transition-colors
+    duration-500
+    ease-in-out${
+    DarkMode
+      ? "bg-gray-800 border-gray-700 text-white"
+      : "bg-white border-gray-200 text-gray-900"
+  }`}
+>
+      <div className="    rounded-xl p-5 w-full h-full flex flex-col  justify-between py-10 ">
 
         {/* Header */}
         <div className="flex justify-between items-center">
@@ -29,10 +38,10 @@ function Week1Report() {
         </div>
 
         {/* Chart */}
-        <div className="mt-6 flex h-52">
+        <div className="mt-6 flex h-52 gap-5">
 
           {/* Numbers */}
-          <div className="flex flex-col justify-between text-xs text-gray-400 pr-3">
+          <div className="flex flex-col justify-between text-xs text-gray-400 gap-7 -mt-7 pr-5">
             {levels
               .slice()
               .reverse()
@@ -44,7 +53,7 @@ function Week1Report() {
           </div>
 
           {/* Chart Area */}
-          <div className="flex-1 relative">
+          <div className="flex-1 relative  ">
 
             {/* Background Lines */}
             <div className="absolute inset-0 flex flex-col justify-between">
