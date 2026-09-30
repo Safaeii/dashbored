@@ -1,5 +1,5 @@
 # Dashboard Management System
-
+![Dashboard Preview](public/images/dashboard-preview.png)
 A modern and responsive dashboard management system built with React, Vite, and Tailwind CSS.
 
 ## 🚀 Features
